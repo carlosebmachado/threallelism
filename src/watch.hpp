@@ -1,5 +1,5 @@
-#ifndef WATCH_H
-#define WATCH_H
+#ifndef WATCH_HPP
+#define WATCH_HPP
 
 #include <time.h>
 #include <chrono>
@@ -198,4 +198,4 @@ public:
 	}
 };
 
-#endif // WATCH_H
+#endif // WATCH_HPP
