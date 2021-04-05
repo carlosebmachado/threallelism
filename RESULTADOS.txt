@@ -1,4 +1,27 @@
+MULTIPLICAÇÃO DE MATRIZES NORMAL
+
+0min 0sec 0mil 8mic 749nan
+
+
+
+MULTIPLICAÇÃO DE MATRIZES PARALELISMO (OPENMP)
+
+0min 0sec 23mil 878mic 120nan
+
+
+
+MULTIPLICAÇÃO DE MATRIZES THREAD (PTHREAD)
+
+0min 0sec 0mil 585mic 804nan
+
+
+
+------------------------------------------------------------
+
+
+
 SOMA DOS VETORES NORMAL
+
 v0(10): 45
 0min 0sec 0mil 7mic 76nan
 v1(10000): 498290
@@ -14,7 +37,10 @@ v5(5000000): 250014181
 v6(50000000): -1795119689
 0min 0sec 280mil 300mic 714nan
 
+
+
 SOMA DOS VETORS PARALELISMO (OPENMP)
+
 v0(10): 45
 0min 0sec 11mil 4mic 431nan
 v1(10000): 110796
@@ -29,6 +55,8 @@ v5(5000000): 67942524
 0min 0sec 68mil 524mic 143nan
 v6(50000000): 635938729
 0min 0sec 770mil 637mic 200nan
+
+
 
 SOMA DOS VETORS THREAD (PTHREAD)
 
