@@ -1,0 +1,34 @@
+SOMA DOS VETORES NORMAL
+v0(10): 45
+0min 0sec 0mil 7mic 76nan
+v1(10000): 498290
+0min 0sec 0mil 193mic 228nan
+v2(150000): 7500787
+0min 0sec 3mil 695mic 829nan
+v3(500000): 25021511
+0min 0sec 3mil 256mic 85nan
+v4(1000000): 50029731
+0min 0sec 4mil 723mic 720nan
+v5(5000000): 250014181
+0min 0sec 28mil 146mic 629nan
+v6(50000000): -1795119689
+0min 0sec 280mil 300mic 714nan
+
+SOMA DOS VETORS PARALELISMO (OPENMP)
+v0(10): 45
+0min 0sec 11mil 4mic 431nan
+v1(10000): 110796
+0min 0sec 3mil 44mic 349nan
+v2(150000): 1783135
+0min 0sec 2mil 124mic 803nan
+v3(500000): 5922754
+0min 0sec 7mil 71mic 105nan
+v4(1000000): 11910452
+0min 0sec 14mil 55mic 858nan
+v5(5000000): 67942524
+0min 0sec 68mil 524mic 143nan
+v6(50000000): 635938729
+0min 0sec 770mil 637mic 200nan
+
+SOMA DOS VETORS THREAD (PTHREAD)
+
