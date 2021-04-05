@@ -23,38 +23,42 @@ MULTIPLICAÇÃO DE MATRIZES THREAD (PTHREAD)
 SOMA DOS VETORES NORMAL
 
 v0(10): 45
-0min 0sec 0mil 7mic 76nan
-v1(10000): 498290
-0min 0sec 0mil 193mic 228nan
-v2(150000): 7500787
-0min 0sec 3mil 695mic 829nan
-v3(500000): 25021511
-0min 0sec 3mil 256mic 85nan
-v4(1000000): 50029731
-0min 0sec 4mil 723mic 720nan
-v5(5000000): 250014181
-0min 0sec 28mil 146mic 629nan
-v6(50000000): -1795119689
-0min 0sec 280mil 300mic 714nan
+0min 0sec 0mil 3mic 93nan
+v1(10000): 499820
+0min 0sec 0mil 43mic 460nan
+v2(150000): 7498761
+0min 0sec 0mil 921mic 717nan
+v3(500000): 24983751
+0min 0sec 2mil 641mic 946nan
+v4(1000000): 50027415
+0min 0sec 4mil 785mic 244nan
+v5(5000000): 249936532
+0min 0sec 28mil 543mic 277nan
+v6(50000000): 2500070415
+0min 0sec 286mil 759mic 939nan
+v7(500000000): 24999730333
+0min 2sec 804mil 721mic 931nan
 
 
 
 SOMA DOS VETORS PARALELISMO (OPENMP)
 
 v0(10): 45
-0min 0sec 11mil 4mic 431nan
-v1(10000): 110796
-0min 0sec 3mil 44mic 349nan
-v2(150000): 1783135
-0min 0sec 2mil 124mic 803nan
-v3(500000): 5922754
-0min 0sec 7mil 71mic 105nan
-v4(1000000): 11910452
-0min 0sec 14mil 55mic 858nan
-v5(5000000): 67942524
-0min 0sec 68mil 524mic 143nan
-v6(50000000): 635938729
-0min 0sec 770mil 637mic 200nan
+0min 0sec 38mil 681mic 826nan
+v1(10000): 499820
+0min 0sec 23mil 490mic 337nan
+v2(150000): 7498761
+0min 0sec 34mil 850mic 487nan
+v3(500000): 24983751
+0min 0sec 15mil 957mic 180nan
+v4(1000000): 50027415
+0min 0sec 29mil 586mic 353nan
+v5(5000000): 249936532
+0min 0sec 31mil 989mic 600nan
+v6(50000000): 2500070415
+0min 0sec 167mil 355mic 729nan
+v7(500000000): 24999730333
+0min 1sec 235mil 515mic 562nan
 
 
 

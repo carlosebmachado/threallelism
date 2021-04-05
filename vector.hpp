@@ -18,18 +18,18 @@ vector randVector(size_t size, int limit = 100) {
     return v;
 }
 
-int nVectorSum(vector v) {
-    int res = 0;
+unsigned long long nVectorSum(vector v) {
+    unsigned long long res = 0;
     for (int i = 0; i < v.size(); ++i) {
         res += v[i];
     }
     return res;
 }
 
-int pVectorSum(vector v) {
-    int res = 0;
+unsigned long long pVectorSum(vector v) {
+    unsigned long long res = 0;
 
-#pragma omp parallel shared(res)
+#pragma omp parallel reduction(+:res)
     {
 #pragma omp for
         for (int i = 0; i < v.size(); ++i) {
@@ -49,6 +49,7 @@ void *vRunner(void *param) {
 }
 
 int tVectorSum(vector v) {
+    // dividir pela quantidade de threads do pc
 
 }
 
