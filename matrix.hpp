@@ -48,17 +48,17 @@ matrix pMatrixMult(matrix m1, matrix m2)
 
     auto res = m1;
 
-	#pragma omp parallel shared(res, m1, m2)
+#pragma omp parallel shared(res, m1, m2)
     {
         //omp_set_num_threads(omp_get_max_threads());
-		#pragma omp for
-		for(size_t i = 0; i < m1.size(); i++)
-		{
-			for (size_t j = 0; j < m1[0].size(); j++)
-			{
-				res[i][j] = m1[i][j] * m2[j][i];
-			}
-		}
+#pragma omp for
+        for(size_t i = 0; i < m1.size(); i++)
+        {
+            for (size_t j = 0; j < m1[0].size(); j++)
+            {
+                res[i][j] = m1[i][j] * m2[j][i];
+            }
+        }
 
     }
 
@@ -68,13 +68,13 @@ matrix pMatrixMult(matrix m1, matrix m2)
 matrix m1g, m2g, resg;
 void* runner(void* param)
 {
-	int* i = (int*)param;
-	for (size_t j = 0; j < m1g[0].size(); j++)
-	{
-		resg[*i][j] = m1g[*i][j] * m2g[j][*i];
-	}
+    int* i = (int*)param;
+    for (size_t j = 0; j < m1g[0].size(); j++)
+    {
+        resg[*i][j] = m1g[*i][j] * m2g[j][*i];
+    }
 
-	pthread_exit(0);
+    pthread_exit(0);
 }
 
 matrix tMatrixMult(matrix m1, matrix m2)
@@ -85,15 +85,15 @@ matrix tMatrixMult(matrix m1, matrix m2)
     m1g = m1;
     m2g = m2;
 
-	pthread_t* tid = new pthread_t[m1.size()];
-	pthread_attr_t* attr = new pthread_attr_t[m1.size()];
+    pthread_t* tid = new pthread_t[m1.size()];
+    pthread_attr_t* attr = new pthread_attr_t[m1.size()];
 
-	for(size_t i = 0; i < m1g.size(); i++)
-	{
-		pthread_attr_init(&attr[i]);
-		pthread_create(&tid[i], &attr[i], runner, &i);
-		pthread_join(tid[i], NULL);
-	}
+    for(size_t i = 0; i < m1g.size(); i++)
+    {
+        pthread_attr_init(&attr[i]);
+        pthread_create(&tid[i], &attr[i], runner, &i);
+        pthread_join(tid[i], NULL);
+    }
 
     return resg;
 }

@@ -22,129 +22,129 @@
 class Stopwatch
 {
 private:
-	clock_t elapsed;
-	clock_t startTime;
+    clock_t elapsed;
+    clock_t startTime;
 
 public:
-	Stopwatch()
-	{
-		elapsed = 0;
-		startTime = 0;
-	}
+    Stopwatch()
+    {
+        elapsed = 0;
+        startTime = 0;
+    }
 
-	~Stopwatch() {}
-
-public:
-	void start()
-	{
-		startTime = clock();
-	}
-
-	void stop()
-	{
-		elapsed = clock() - startTime;
-	}
-
-	void reset()
-	{
-		elapsed = 0;
-		startTime = 0;
-	}
-
-	void restart()
-	{
-		reset();
-		start();
-	}
+    ~Stopwatch() {}
 
 public:
-	clock_t getElapsed()
-	{
-		return elapsed;
-	}
+    void start()
+    {
+        startTime = clock();
+    }
 
-	std::string getElapsedFormatted()
-	{
-		long long d = 0, h = 0, m = 0, s = 0, mil = 0, auxElapsed = elapsed;
-		d = auxElapsed / DAY;
-		auxElapsed %= DAY;
-		h = auxElapsed / HOUR;
-		auxElapsed %= HOUR;
-		m = auxElapsed / MINUTE;
-		auxElapsed %= MINUTE;
-		s = auxElapsed / SECOND;
-		auxElapsed %= SECOND;
-		mil = auxElapsed;
-		std::stringstream r;
-		r << d << "d " << h << "h " << m << "m " << s << "s " << mil << "mil";
-		return r.str();
-	}
+    void stop()
+    {
+        elapsed = clock() - startTime;
+    }
+
+    void reset()
+    {
+        elapsed = 0;
+        startTime = 0;
+    }
+
+    void restart()
+    {
+        reset();
+        start();
+    }
+
+public:
+    clock_t getElapsed()
+    {
+        return elapsed;
+    }
+
+    std::string getElapsedFormatted()
+    {
+        long long d = 0, h = 0, m = 0, s = 0, mil = 0, auxElapsed = elapsed;
+        d = auxElapsed / DAY;
+        auxElapsed %= DAY;
+        h = auxElapsed / HOUR;
+        auxElapsed %= HOUR;
+        m = auxElapsed / MINUTE;
+        auxElapsed %= MINUTE;
+        s = auxElapsed / SECOND;
+        auxElapsed %= SECOND;
+        mil = auxElapsed;
+        std::stringstream r;
+        r << d << "d " << h << "h " << m << "m " << s << "s " << mil << "mil";
+        return r.str();
+    }
 };
 
 // ChronoStopwatch class.
 class ChronoStopwatch
 {
 private:
-	long long elapsed;
-	std::chrono::_V2::system_clock::time_point startTime;
+    long long elapsed;
+    std::chrono::_V2::system_clock::time_point startTime;
 
 public:
-	ChronoStopwatch()
-	{
-		elapsed = 0;
-		startTime = std::chrono::high_resolution_clock::now();
-	}
+    ChronoStopwatch()
+    {
+        elapsed = 0;
+        startTime = std::chrono::high_resolution_clock::now();
+    }
 
-	~ChronoStopwatch() {}
-
-public:
-	void start()
-	{
-		startTime = std::chrono::high_resolution_clock::now();
-	}
-
-	void stop()
-	{
-		elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - startTime).count();
-	}
-
-	void reset()
-	{
-		elapsed = 0;
-		startTime = std::chrono::high_resolution_clock::now();
-	}
-
-	void restart()
-	{
-		reset();
-		start();
-	}
+    ~ChronoStopwatch() {}
 
 public:
-	long long getElapsed()
-	{
-		return elapsed;
-	}
+    void start()
+    {
+        startTime = std::chrono::high_resolution_clock::now();
+    }
 
-	std::string getElapsedFormatted()
-	{
-		long long min = 0, sec = 0, mil = 0, mic = 0, nan = 0, auxElapsed = elapsed;
-		sec = auxElapsed / C_SECOND;
-		auxElapsed %= C_SECOND;
-		mil = auxElapsed / C_MILLISECOND;
-		auxElapsed %= C_MILLISECOND;
-		mic = auxElapsed / C_MICROSECOND;
-		auxElapsed %= C_MICROSECOND;
-		nan = auxElapsed;
-		while (sec >= 60)
-		{
-			sec -= 60;
-			min++;
-		}
-		std::stringstream r;
-		r << min << "min " << sec << "sec " << mil << "mil " << mic << "mic " << nan << "nan";
-		return r.str();
-	}
+    void stop()
+    {
+        elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - startTime).count();
+    }
+
+    void reset()
+    {
+        elapsed = 0;
+        startTime = std::chrono::high_resolution_clock::now();
+    }
+
+    void restart()
+    {
+        reset();
+        start();
+    }
+
+public:
+    long long getElapsed()
+    {
+        return elapsed;
+    }
+
+    std::string getElapsedFormatted()
+    {
+        long long min = 0, sec = 0, mil = 0, mic = 0, nan = 0, auxElapsed = elapsed;
+        sec = auxElapsed / C_SECOND;
+        auxElapsed %= C_SECOND;
+        mil = auxElapsed / C_MILLISECOND;
+        auxElapsed %= C_MILLISECOND;
+        mic = auxElapsed / C_MICROSECOND;
+        auxElapsed %= C_MICROSECOND;
+        nan = auxElapsed;
+        while (sec >= 60)
+        {
+            sec -= 60;
+            min++;
+        }
+        std::stringstream r;
+        r << min << "min " << sec << "sec " << mil << "mil " << mic << "mic " << nan << "nan";
+        return r.str();
+    }
 };
 
 
@@ -152,50 +152,50 @@ public:
 class Timer
 {
 private:
-	clock_t startTime;
-	clock_t interval;
+    clock_t startTime;
+    clock_t interval;
 
 public:
-	Timer()
-	{
-		startTime = 0;
-		interval = 0;
-	}
+    Timer()
+    {
+        startTime = 0;
+        interval = 0;
+    }
 
-	Timer(clock_t interval)
-	{
-		startTime = 0;
-		this->interval = interval;
-	}
+    Timer(clock_t interval)
+    {
+        startTime = 0;
+        this->interval = interval;
+    }
 
-	~Timer() {}
-
-public:
-	void start()
-	{
-		startTime = clock();
-	}
-
-	bool timeout()
-	{
-		if (clock() - startTime > interval)
-		{
-			startTime = clock();
-			return true;
-		}
-		return false;
-	}
+    ~Timer() {}
 
 public:
-	void setInterval(clock_t interval)
-	{
-		this->interval = interval;
-	}
+    void start()
+    {
+        startTime = clock();
+    }
 
-	clock_t getInterval()
-	{
-		return interval;
-	}
+    bool timeout()
+    {
+        if (clock() - startTime > interval)
+        {
+            startTime = clock();
+            return true;
+        }
+        return false;
+    }
+
+public:
+    void setInterval(clock_t interval)
+    {
+        this->interval = interval;
+    }
+
+    clock_t getInterval()
+    {
+        return interval;
+    }
 };
 
 #endif // WATCH_HPP
