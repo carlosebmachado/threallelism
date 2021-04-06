@@ -23,44 +23,60 @@ MULTIPLICAÇÃO DE MATRIZES THREAD (PTHREAD)
 SOMA DOS VETORES NORMAL
 
 v0(10): 45
-0min 0sec 0mil 3mic 93nan
-v1(10000): 499820
-0min 0sec 0mil 43mic 460nan
-v2(150000): 7498761
-0min 0sec 0mil 921mic 717nan
-v3(500000): 24983751
-0min 0sec 2mil 641mic 946nan
-v4(1000000): 50027415
-0min 0sec 4mil 785mic 244nan
-v5(5000000): 249936532
-0min 0sec 28mil 543mic 277nan
-v6(50000000): 2500070415
-0min 0sec 286mil 759mic 939nan
-v7(500000000): 24999730333
-0min 2sec 804mil 721mic 931nan
+0min 0sec 0mil 1mic 730nan
+v1(10000): 501751
+0min 0sec 0mil 400mic 604nan
+v2(150000): 7499251
+0min 0sec 5mil 459mic 870nan
+v3(500000): 24990279
+0min 0sec 3mil 999mic 600nan
+v4(1000000): 50008229
+0min 0sec 7mil 991mic 33nan
+v5(5000000): 250045425
+0min 0sec 39mil 150mic 879nan
+v6(50000000): 2499904168
+0min 0sec 391mil 9mic 489nan
+v7(500000000): 25000138802
+0min 3sec 898mil 92mic 954nan
 
 
 
 SOMA DOS VETORS PARALELISMO (OPENMP)
 
 v0(10): 45
-0min 0sec 38mil 681mic 826nan
-v1(10000): 499820
-0min 0sec 23mil 490mic 337nan
-v2(150000): 7498761
-0min 0sec 34mil 850mic 487nan
-v3(500000): 24983751
-0min 0sec 15mil 957mic 180nan
-v4(1000000): 50027415
-0min 0sec 29mil 586mic 353nan
-v5(5000000): 249936532
-0min 0sec 31mil 989mic 600nan
-v6(50000000): 2500070415
-0min 0sec 167mil 355mic 729nan
-v7(500000000): 24999730333
-0min 1sec 235mil 515mic 562nan
+0min 0sec 5mil 297mic 277nan
+v1(10000): 501751
+0min 0sec 0mil 65mic 15nan
+v2(150000): 7499251
+0min 0sec 0mil 96mic 520nan
+v3(500000): 24990279
+0min 0sec 0mil 319mic 609nan
+v4(1000000): 50008229
+0min 0sec 0mil 638mic 136nan
+v5(5000000): 250045425
+0min 0sec 7mil 79mic 880nan
+v6(50000000): 2499904168
+0min 0sec 33mil 601mic 234nan
+v7(500000000): 25000138802
+0min 0sec 422mil 279mic 251nan
 
 
 
 SOMA DOS VETORS THREAD (PTHREAD)
 
+v0(10): 45
+0min 0sec 0mil 266mic 8nan
+v1(10000): 501751
+0min 0sec 0mil 301mic 388nan
+v2(150000): 7499251
+0min 0sec 0mil 814mic 380nan
+v3(500000): 24990279
+0min 0sec 2mil 4mic 596nan
+v4(1000000): 50008229
+0min 0sec 3mil 773mic 410nan
+v5(5000000): 250045425
+0min 0sec 17mil 196mic 448nan
+v6(50000000): 2499904168
+0min 0sec 165mil 960mic 230nan
+v7(500000000): 25000138802
+0min 1sec 645mil 21mic 713nan

@@ -9,7 +9,7 @@
 typedef std::vector<std::vector<int>> matrix;
 
 bool isCompatible(matrix m1, matrix m2) {
-    return m1.size() > 0 && m2.size() > 0 && m1.size() == m2[0].size() && m1[0].size() == m2.size();
+    return !m1.empty() && !m2.empty() && m1.size() == m2[0].size() && m1[0].size() == m2.size();
 }
 
 void mPrint(matrix r) {
@@ -40,7 +40,7 @@ matrix pMatrixMult(matrix m1, matrix m2) {
 
     auto res = m1;
 
-#pragma omp parallel shared(res, m1, m2)
+#pragma omp parallel shared(res, m1, m2) default(none)
     {
 #pragma omp for
         for (size_t i = 0; i < m1.size(); ++i) {
@@ -61,23 +61,21 @@ void *mRunner(void *param) {
         mresg[*i][j] = m1g[*i][j] * m2g[j][*i];
     }
 
-    pthread_exit(0);
+    pthread_exit(nullptr);
 }
 
-matrix tMatrixMult(matrix m1, matrix m2) {
+matrix tMatrixMult(const matrix& m1, const matrix& m2) {
     if (!isCompatible(m1, m2)) return matrix();
 
     mresg = m1;
     m1g = m1;
     m2g = m2;
 
-    pthread_t *tid = new pthread_t[m1.size()];
-    pthread_attr_t *attr = new pthread_attr_t[m1.size()];
+    auto *tid = new pthread_t[m1.size()];
 
     for (size_t i = 0; i < m1g.size(); i++) {
-        pthread_attr_init(&attr[i]);
-        pthread_create(&tid[i], &attr[i], mRunner, &i);
-        pthread_join(tid[i], NULL);
+        pthread_create(&tid[i], nullptr, mRunner, &i);
+        pthread_join(tid[i], nullptr);
     }
 
     return mresg;

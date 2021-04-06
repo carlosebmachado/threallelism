@@ -3,6 +3,9 @@
 #include "vector.hpp"
 
 int main() {
+//    std::cout << std::thread::hardware_concurrency();
+//    return 0;
+
     int op;
     auto csw = ChronoStopwatch();
 
@@ -22,6 +25,9 @@ int main() {
             randVector(50000000, 100),
             randVector(500000000, 100)
     };
+//    std::vector<vector> v = {
+//            {0, 1, 2, 3, 4, 5}
+//    };
 
     while (true) {
         std::cout << "Choose:" << std::endl;
@@ -92,7 +98,13 @@ int main() {
                         std::cout << csw.getElapsedFormatted() << std::endl;
                     }
                 } else if (op == 3) {
-
+                    for (int i = 0; i < v.size(); ++i) {
+                        csw.start();
+                        auto r = tVectorSum(v[i]);
+                        csw.stop();
+                        std::cout << "v" << i << "(" << v[i].size() << "): " << r << std::endl;
+                        std::cout << csw.getElapsedFormatted() << std::endl;
+                    }
                 } else if (op == 4) {
                     break;
                 } else {

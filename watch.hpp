@@ -7,7 +7,7 @@
  * https://github.com/carlosebmachado/watch
  */
 
-#include <time.h>
+#include <ctime>
 #include <chrono>
 #include <string>
 #include <sstream>
@@ -38,7 +38,7 @@ public:
         startTime = 0;
     }
 
-    ~Stopwatch() {}
+    ~Stopwatch() = default;
 
 public:
     void start()
@@ -64,12 +64,12 @@ public:
     }
 
 public:
-    clock_t getElapsed()
+    clock_t getElapsed() const
     {
         return elapsed;
     }
 
-    std::string getElapsedFormatted()
+    std::string getElapsedFormatted() const
     {
         long long d = 0, h = 0, m = 0, s = 0, mil = 0, auxElapsed = elapsed;
         d = auxElapsed / DAY;
@@ -101,7 +101,7 @@ public:
         startTime = std::chrono::high_resolution_clock::now();
     }
 
-    ~ChronoStopwatch() {}
+    ~ChronoStopwatch() = default;
 
 public:
     void start()
@@ -127,12 +127,12 @@ public:
     }
 
 public:
-    long long getElapsed()
+    long long getElapsed() const
     {
         return elapsed;
     }
 
-    std::string getElapsedFormatted()
+    std::string getElapsedFormatted() const
     {
         long long min = 0, sec = 0, mil = 0, mic = 0, nan = 0, auxElapsed = elapsed;
         sec = auxElapsed / C_SECOND;
@@ -168,13 +168,13 @@ public:
         interval = 0;
     }
 
-    Timer(clock_t interval)
+    explicit Timer(clock_t interval)
     {
         startTime = 0;
         this->interval = interval;
     }
 
-    ~Timer() {}
+    ~Timer() = default;
 
 public:
     void start()
@@ -198,7 +198,7 @@ public:
         this->interval = interval;
     }
 
-    clock_t getInterval()
+    clock_t getInterval() const
     {
         return interval;
     }
