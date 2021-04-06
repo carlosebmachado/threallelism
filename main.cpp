@@ -3,31 +3,33 @@
 #include "vector.hpp"
 
 int main() {
-//    std::cout << std::thread::hardware_concurrency();
-//    return 0;
-
     int op;
     auto csw = ChronoStopwatch();
 
-    matrix m1 = {{1, 2, 3},
-                 {6, 5, 4}};
-    matrix m2 = {{1, 2},
-                 {3, 4},
-                 {5, 6}};
+    std::cout << "Loading matrix and vectors...\n";
+
+    std::vector<matrix> m = {
+            {{1, 2, 3},
+             {6, 5, 4}},
+            {{1, 2},
+             {3, 4},
+             {5, 6}},
+            randMatrix(1000, 500),
+            randMatrix(500, 1000),
+            randMatrix(10000, 5000),
+            randMatrix(5000, 10000)
+    };
 
     std::vector<vector> v = {
             {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
-            randVector(10000, 100),
-            randVector(150000, 100),
-            randVector(500000, 100),
-            randVector(1000000, 100),
-            randVector(5000000, 100),
-            randVector(50000000, 100),
-            randVector(500000000, 100)
+            randVector(10000),
+            randVector(150000),
+            randVector(500000),
+            randVector(1000000),
+            randVector(5000000),
+            randVector(50000000),
+            randVector(500000000)
     };
-//    std::vector<vector> v = {
-//            {0, 1, 2, 3, 4, 5}
-//    };
 
     while (true) {
         std::cout << "Choose:" << std::endl;
@@ -47,24 +49,25 @@ int main() {
                 std::cout << "Option: ";
                 std::cin >> op;
 
-                if (op == 1) {
-                    csw.start();
-                    auto r = nMatrixMult(m1, m2);
-                    csw.stop();
-                    mPrint(r);
-                    std::cout << csw.getElapsedFormatted() << std::endl;
-                } else if (op == 2) {
-                    csw.start();
-                    auto r = pMatrixMult(m1, m2);
-                    csw.stop();
-                    mPrint(r);
-                    std::cout << csw.getElapsedFormatted() << std::endl;
-                } else if (op == 3) {
-                    csw.start();
-                    auto r = tMatrixMult(m1, m2);
-                    csw.stop();
-                    mPrint(r);
-                    std::cout << csw.getElapsedFormatted() << std::endl;
+                if (op == 1 || op == 2 || op == 3) {
+                    for (int i = 0; i < m.size(); i += 2) {
+                        csw.start();
+                        matrix r;
+                        if (op == 1) {
+                            r = nMatrixMult(m[i], m[i + 1]);
+                        } else if (op == 2) {
+                            r = pMatrixMult(m[i], m[i + 1]);
+                        } else if (op == 3) {
+                            r = tMatrixMult(m[i], m[i + 1]);
+                        }
+                        csw.stop();
+                        if (i == 0) {
+                            mPrint(r);
+                        }
+                        std::cout << "matrix(" << i << ")[" << m[i].size() << "][" << m[i][0].size() << "]\n";
+                        std::cout << "matrix(" << i+1 << ")[" << m[i+1].size() << "][" << m[i+1][0].size() << "]\n";
+                        std::cout << csw.getElapsedFormatted() << std::endl;
+                    }
                 } else if (op == 4) {
                     break;
                 } else {
@@ -81,28 +84,19 @@ int main() {
                 std::cout << "Option: ";
                 std::cin >> op;
 
-                if (op == 1) {
+                if (op == 1 || op == 2 || op == 3) {
                     for (int i = 0; i < v.size(); ++i) {
                         csw.start();
-                        auto r = nVectorSum(v[i]);
+                        unsigned long long r;
+                        if (op == 1) {
+                            r = nVectorSum(v[i]);
+                        } else if (op == 2) {
+                            r = pVectorSum(v[i]);
+                        } else if (op == 3) {
+                            r = tVectorSum(v[i]);
+                        }
                         csw.stop();
-                        std::cout << "v" << i << "(" << v[i].size() << "): " << r << std::endl;
-                        std::cout << csw.getElapsedFormatted() << std::endl;
-                    }
-                } else if (op == 2) {
-                    for (int i = 0; i < v.size(); ++i) {
-                        csw.start();
-                        auto r = pVectorSum(v[i]);
-                        csw.stop();
-                        std::cout << "v" << i << "(" << v[i].size() << "): " << r << std::endl;
-                        std::cout << csw.getElapsedFormatted() << std::endl;
-                    }
-                } else if (op == 3) {
-                    for (int i = 0; i < v.size(); ++i) {
-                        csw.start();
-                        auto r = tVectorSum(v[i]);
-                        csw.stop();
-                        std::cout << "v" << i << "(" << v[i].size() << "): " << r << std::endl;
+                        std::cout << "vector(" << i << ")[" << v[i].size() << "]: " << r << std::endl;
                         std::cout << csw.getElapsedFormatted() << std::endl;
                     }
                 } else if (op == 4) {

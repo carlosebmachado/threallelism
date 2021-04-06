@@ -5,8 +5,21 @@
 #include <vector>
 #include <omp.h>
 #include <pthread.h>
+#include <ctime>
 
 typedef std::vector<std::vector<int>> matrix;
+
+matrix randMatrix(size_t r, size_t c, int limit = 100) {
+    matrix m = matrix();
+    srand(time(nullptr));
+    for (size_t i = 0; i < r; ++i) {
+        m.push_back(std::vector<int>());
+        for (size_t j = 0; j < c; ++j) {
+            m[i].push_back(rand() % (limit + 1));
+        }
+    }
+    return m;
+}
 
 bool isCompatible(matrix m1, matrix m2) {
     return !m1.empty() && !m2.empty() && m1.size() == m2[0].size() && m1[0].size() == m2.size();
