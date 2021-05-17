@@ -1,11 +1,11 @@
-#ifndef WATCH_HPP
-#define WATCH_HPP
-
-/*
+/**
  * MIT License
  * Copyright (c) 2020 Carlos Machado
  * https://github.com/carlosebmachado/watch
  */
+
+#ifndef WATCH_HPP
+#define WATCH_HPP
 
 #include <ctime>
 #include <chrono>
